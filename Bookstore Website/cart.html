@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your selected books and manage your BookHaven shopping cart.">
+    <title>Shopping Cart | BookHaven</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script src="./js/data.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/cart.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand" aria-label="BookHaven home">
+                <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                <span>Book<span class="brand-accent">Haven</span></span>
+            </a>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="nav-links" type="button">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="cart.html" class="cart-link active" aria-current="page">
+                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                    Cart <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section cart-page">
+            <div class="container">
+                <div class="cart-page-heading">
+                    <div>
+                        <p class="eyebrow">YOUR BOOKSHELF</p>
+                        <h1>Your Shopping Cart</h1>
+                        <p class="section-description">
+                            Review your books, update quantities, and check your total.
+                        </p>
+                    </div>
+
+                    <a href="books.html" class="text-link">
+                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                        Continue shopping
+                    </a>
+                </div>
+
+                <div id="cart-feedback" class="cart-feedback" role="status" aria-live="polite" hidden></div>
+
+                <div id="cart-loading" class="loading-message">
+                    Loading your cart...
+                </div>
+
+                <div id="cart-content" class="cart-layout" hidden>
+                    <section class="cart-items-panel" aria-labelledby="cart-items-title">
+                        <div class="cart-panel-heading">
+                            <h2 id="cart-items-title">Your selected books</h2>
+                            <span id="cart-item-count">0 items</span>
+                        </div>
+
+                        <div id="cart-items" class="cart-items"></div>
+                    </section>
+
+                    <aside class="cart-summary" aria-labelledby="summary-title">
+                        <h2 id="summary-title">Order Summary</h2>
+
+                        <div class="summary-row">
+                            <span>Books</span>
+                            <span id="summary-quantity">0</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">₦0.00</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Delivery</span>
+                            <span>Calculated at checkout</span>
+                        </div>
+
+                        <div class="summary-divider"></div>
+
+                        <div class="summary-row summary-total">
+                            <span>Total</span>
+                            <span id="cart-total">₦0.00</span>
+                        </div>
+
+                        <p class="summary-note">
+                            Your total reflects the current prices of the books in your cart.
+                        </p>
+
+                        <a href="checkout.html" id="checkout-button" class="btn btn-primary cart-checkout-button">
+                            Proceed to Checkout
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+
+                        <p class="checkout-note">
+                            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                            Checkout and payment will be connected in a later milestone.
+                        </p>
+
+                        <a href="books.html" class="cart-continue-link">
+                            <i class="fa-solid fa-book" aria-hidden="true"></i>
+                            Explore more books
+                        </a>
+                    </aside>
+                </div>
+
+                <div id="cart-empty" class="cart-empty" hidden>
+                    <div class="cart-empty-icon">
+                        <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                    </div>
+
+                    <h2>Your cart is waiting for a good book</h2>
+                    <p>
+                        You haven't added any books yet. Explore the collection and
+                        find something worth reading.
+                    </p>
+
+                    <a href="books.html" class="btn btn-primary">
+                        <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                        Browse Books
+                    </a>
+                </div>
+
+                <div id="cart-error" class="cart-error" hidden>
+                    <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                    <h2>We couldn't load your cart</h2>
+                    <p id="cart-error-message">
+                        Please refresh the page and try again.
+                    </p>
+                    <button id="retry-cart" class="btn btn-primary" type="button">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="index.html" class="brand footer-brand">
+                        <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                        <span>Book<span class="brand-accent">Haven</span></span>
+                    </a>
+                    <p>
+                        Discover stories, explore ideas, and make reading part of
+                        your everyday life.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <a href="index.html">Home</a>
+                    <a href="books.html">All Books</a>
+                    <a href="about.html">About Us</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="cart.html">Shopping Cart</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2026</span> BookHaven. All rights reserved.</p>
+                <p>Made for people who love to read.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

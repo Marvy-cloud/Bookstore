@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore book details, discover your next read and add books to your BookHaven shopping cart.">
+
+    <title>Book Details | BookHaven</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script src="./js/data.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/book-details.js" defer></script>
+    <script src="./js/reviews.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="BookHaven home">
+                <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                Book<span>Haven</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"
+                aria-controls="primary-nav">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="books.html">Explore Books</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <a class="cart-link" href="cart.html" aria-label="Shopping cart">
+                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                <span>Cart</span>
+                <span class="cart-count" data-cart-count>0</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="book-details-section">
+            <div class="container">
+                <nav class="breadcrumbs details-breadcrumbs" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    <a href="books.html">Explore Books</a>
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    <span id="breadcrumb-title" aria-current="page">Book Details</span>
+                </nav>
+
+                <div id="book-details-content" aria-busy="true">
+                    <p class="loading-message">Loading book details...</p>
+                </div>
+
+                <div id="book-not-found" class="empty-state" hidden>
+                    <div class="empty-state-icon">
+                        <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                    </div>
+
+                    <h1>We couldn't find that book.</h1>
+
+                    <p>
+                        The book may not exist or its link may be incorrect.
+                        Explore our catalogue to find another great read.
+                    </p>
+
+                    <a href="books.html" class="btn btn-primary">
+                        Browse all books
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reviews-section" id="reviews-section" hidden>
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">WHAT READERS SAY</span>
+                        <h2>Reader reviews</h2>
+                    </div>
+
+                    <div class="review-summary" id="review-summary"></div>
+                </div>
+
+                <div class="reviews-layout">
+                    <div class="review-list" id="review-list"></div>
+
+                    <form class="review-form" id="review-form" novalidate>
+                        <h3>Write a review</h3>
+                        <p class="review-form-note">
+                            Finished this book? Tell other readers what you thought.
+                        </p>
+
+                        <fieldset class="review-field star-input">
+                            <legend>Your rating</legend>
+
+                            <div class="star-input-options">
+                                <input type="radio" name="rating" id="star-5" value="5">
+                                <label for="star-5" title="5 stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span class="sr-only">5 stars</span></label>
+
+                                <input type="radio" name="rating" id="star-4" value="4">
+                                <label for="star-4" title="4 stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span class="sr-only">4 stars</span></label>
+
+                                <input type="radio" name="rating" id="star-3" value="3">
+                                <label for="star-3" title="3 stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span class="sr-only">3 stars</span></label>
+
+                                <input type="radio" name="rating" id="star-2" value="2">
+                                <label for="star-2" title="2 stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span class="sr-only">2 stars</span></label>
+
+                                <input type="radio" name="rating" id="star-1" value="1">
+                                <label for="star-1" title="1 star"><i class="fa-solid fa-star" aria-hidden="true"></i><span class="sr-only">1 star</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="review-field">
+                            <label for="review-name">Your name</label>
+                            <input id="review-name" name="review-name" type="text" maxlength="40" autocomplete="name" placeholder="e.g. Kcee">
+                        </div>
+
+                        <div class="review-field">
+                            <label for="review-comment">Your review</label>
+                            <textarea id="review-comment" name="review-comment" maxlength="600" placeholder="What did you like or dislike about this book?"></textarea>
+                        </div>
+
+                        <button class="btn btn-primary review-submit" type="submit">
+                            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                            Submit review
+                        </button>
+
+                        <p id="review-feedback" class="review-feedback" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section related-section" id="related-section" hidden>
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">KEEP EXPLORING</span>
+                        <h2>You might also enjoy</h2>
+                        <p class="section-description">
+                            Discover another book for your reading list.
+                        </p>
+                    </div>
+
+                    <a href="books.html" class="text-link">
+                        Browse all books
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="book-grid" id="related-books"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand brand-light" href="index.html">
+                    <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                    Book<span>Haven</span>
+                </a>
+
+                <p>A little corner of the world for people who love books.</p>
+
+                <div class="social-links">
+                    <a href="https://instagram.com/" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://facebook.com/" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://x.com/" aria-label="X">
+                        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <a href="books.html">All books</a>
+                <a href="books.html?category=Fiction">Fiction</a>
+                <a href="books.html?category=Business">Business</a>
+                <a href="books.html?category=Self-Help">Self-Help</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>BookHaven</h3>
+                <a href="about.html">Our story</a>
+                <a href="contact.html">Contact us</a>
+                <a href="cart.html">Your cart</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Need help?</h3>
+                <p>Have a question about a book? Get in touch with us.</p>
+                <a href="contact.html" class="footer-contact-link">
+                    Contact us
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; <span id="current-year"></span> BookHaven. All rights reserved.</p>
+            <p>Made for the love of reading.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

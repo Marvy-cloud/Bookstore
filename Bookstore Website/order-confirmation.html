@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your BookHaven test order confirmation.">
+    <title>Order Confirmation | BookHaven</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script src="./js/order-confirmation.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand">
+                <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                <span>Book<span class="brand-accent">Haven</span></span>
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section confirmation-page">
+        <div class="container">
+            <section id="confirmation-card" class="confirmation-card" hidden>
+                <div class="confirmation-icon">
+                    <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                </div>
+
+                <p class="eyebrow">ORDER SUMMARY</p>
+                <h1>Test order created</h1>
+
+                <p class="confirmation-intro">
+                    Your order has been saved in this browser for development and testing.
+                    No payment has been taken, and the bookstore has not received this order.
+                </p>
+
+                <div class="confirmation-reference">
+                    <span>Demo order reference</span>
+                    <strong id="confirmation-reference">—</strong>
+                    <span id="confirmation-date"></span>
+                </div>
+
+                <div class="confirmation-status">
+                    <div>
+                        <span>Order status</span>
+                        <strong id="confirmation-order-status">Pending review</strong>
+                    </div>
+                    <div>
+                        <span>Payment status</span>
+                        <strong id="confirmation-payment-status">Not paid</strong>
+                    </div>
+                </div>
+
+                <section class="confirmation-section">
+                    <h2>Items ordered</h2>
+                    <div id="confirmation-items"></div>
+                </section>
+
+                <section class="confirmation-section">
+                    <h2>Delivery information</h2>
+                    <div id="confirmation-delivery"></div>
+                </section>
+
+                <section class="confirmation-section">
+                    <h2>Customer information</h2>
+                    <div id="confirmation-customer"></div>
+                </section>
+
+                <div class="confirmation-total">
+                    <span>Books subtotal</span>
+                    <strong id="confirmation-subtotal">₦0.00</strong>
+                </div>
+
+                <p class="confirmation-disclaimer">
+                    Delivery cost is not yet calculated. This demonstration does not
+                    create a server-side order, send an email, or process payment.
+                    Do not use it for real customer orders.
+                </p>
+
+                <div class="confirmation-actions">
+                    <a href="books.html" class="btn btn-primary">
+                        <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                        Explore more books
+                    </a>
+                    <a href="index.html" class="confirmation-home-link">Back to home</a>
+                </div>
+            </section>
+
+            <section id="confirmation-missing" class="confirmation-card" hidden>
+                <div class="confirmation-icon">
+                    <i class="fa-solid fa-receipt" aria-hidden="true"></i>
+                </div>
+                <h1>No recent order found</h1>
+                <p>
+                    This browser doesn't have a recent BookHaven test order to display.
+                </p>
+                <a href="books.html" class="btn btn-primary">Browse books</a>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2026</span> BookHaven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
